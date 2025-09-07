@@ -46,6 +46,20 @@
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
         .tech-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem; }
         
+        .experience { padding: 100px 0; }
+        .experience-timeline { max-width: 800px; margin: 0 auto; position: relative; }
+        .experience-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #2563eb; transform: translateX(-50%); }
+        .experience-item { margin-bottom: 3rem; position: relative; }
+        .experience-content { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 45%; position: relative; }
+        .experience-item:nth-child(odd) .experience-content { margin-left: auto; }
+        .experience-item:nth-child(even) .experience-content { margin-right: auto; }
+        .experience-date { background: #2563eb; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; position: absolute; left: 50%; transform: translateX(-50%); top: 1rem; }
+        .experience-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937; }
+        .experience-company { color: #2563eb; font-weight: 600; margin-bottom: 1rem; }
+        .experience-description { color: #6b7280; line-height: 1.6; }
+        .experience-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; }
+        
         .about { padding: 100px 0; }
         .about-text p { font-size: 1.1rem; margin-bottom: 1.5rem; text-align: center; line-height: 1.8; }
         
@@ -65,6 +79,9 @@
             .hero-title { font-size: 2rem; }
             .profile-img { width: 200px; height: 200px; }
             .projects-grid { grid-template-columns: 1fr; }
+            .experience-timeline::before { left: 20px; }
+            .experience-content { width: calc(100% - 60px); margin-left: 60px !important; margin-right: 0 !important; }
+            .experience-date { left: 20px; transform: none; }
             .contact-content { grid-template-columns: 1fr; }
         }
     </style>
@@ -76,6 +93,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -330,6 +348,63 @@
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                
+                <div class="experience-item">
+                    <div class="experience-date">2024 - Present</div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Frontend Developer</h3>
+                        <div class="experience-company">Freelance</div>
+                        <p class="experience-description">Developing responsive web applications and user interfaces using modern frontend technologies. Creating interactive websites with focus on user experience and performance optimization.</p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">2023 - 2024</div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Python Developer</h3>
+                        <div class="experience-company">Personal Projects</div>
+                        <p class="experience-description">Built various Python applications including games, automation scripts, and web applications. Focused on clean code practices and efficient problem-solving approaches.</p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">2022 - 2023</div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Web Development Intern</h3>
+                        <div class="experience-company">Self-Learning</div>
+                        <p class="experience-description">Started journey in web development by learning HTML, CSS, and JavaScript. Built multiple static websites and gained hands-on experience with responsive design principles.</p>
+                        <div class="experience-skills">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">Git</span>
                         </div>
                     </div>
                 </div>
