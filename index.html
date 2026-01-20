@@ -3,98 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishu Kumar - Frontend & Python Developer</title>
+    <title>Rishu Kumar - Full Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a1a; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 1rem 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .logo-text { font-size: 1.5rem; font-weight: bold; color: #2563eb; }
+        /* Navigation */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-menu { display: flex; list-style: none; gap: 2rem; }
-        .nav-link { text-decoration: none; color: #333; font-weight: 500; }
-        .nav-link:hover { color: #2563eb; }
+        .nav-link { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+        .nav-link:hover { color: #667eea; }
         
-        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding-top: 80px; }
-        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero-title { font-size: 3rem; font-weight: bold; margin-bottom: 1rem; }
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding-top: 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
         .highlight { color: #fbbf24; }
-        .hero-subtitle { font-size: 1.5rem; margin-bottom: 1.5rem; }
-        .hero-description { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 1.5rem; opacity: 0.9; font-weight: 500; }
+        .hero-description { font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7; opacity: 0.9; }
         .hero-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; }
-        .btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
-        .btn-primary { background: #fbbf24; color: #1f2937; }
-        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn { padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-primary { background: #fbbf24; color: #1f2937; box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.6); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
         .social-links { display: flex; gap: 1rem; }
-        .social-links a { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
-        .profile-img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.2); }
+        .social-links a { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .social-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .profile-img { width: 350px; height: 350px; border-radius: 50%; object-fit: cover; border: 6px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         
-        .section-title { font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 3rem; color: #1f2937; }
-        .projects { padding: 100px 0; background: #f9fafb; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .project-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .project-image { height: 250px; overflow: hidden; position: relative; }
-        .project-image img { width: 100%; height: 100%; object-fit: cover; }
-        .project-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(37,99,235,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        /* Section Styles */
+        .section { padding: 100px 0; }
+        .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 1rem; color: #1f2937; }
+        .section-subtitle { text-align: center; color: #6b7280; font-size: 1.1rem; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        /* About Section */
+        .about { background: #f8fafc; }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-text { font-size: 1.1rem; line-height: 1.8; color: #4b5563; margin-bottom: 2rem; }
+        
+        /* Skills Section */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .skill-category { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .skill-category:hover { transform: translateY(-5px); }
+        .skill-category h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.875rem; font-weight: 500; }
+        
+        /* Experience Section */
+        .experience { background: #f8fafc; }
+        .experience-timeline { max-width: 900px; margin: 0 auto; }
+        .experience-item { background: white; padding: 2.5rem; border-radius: 20px; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; transition: transform 0.3s; }
+        .experience-item:hover { transform: translateY(-5px); }
+        .experience-item::before { content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%); width: 4px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 2px; }
+        .experience-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .experience-title { font-size: 1.4rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+        .experience-company { color: #667eea; font-weight: 600; font-size: 1.1rem; }
+        .experience-date { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; }
+        .experience-description { color: #4b5563; line-height: 1.7; margin-bottom: 1.5rem; }
+        .experience-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .exp-skill-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; font-weight: 500; }
+        
+        /* Projects Section */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
+        .project-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .project-image { height: 200px; position: relative; overflow: hidden; }
+        .project-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(102,126,234,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
         .project-card:hover .project-overlay { opacity: 1; }
         .project-links { display: flex; gap: 1rem; }
-        .project-link { width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2563eb; text-decoration: none; }
+        .project-link { width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #667eea; text-decoration: none; transition: transform 0.3s; }
+        .project-link:hover { transform: scale(1.1); }
         .project-content { padding: 2rem; }
-        .project-content h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .tech-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem; }
+        .project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
+        .project-description { color: #4b5563; line-height: 1.6; margin-bottom: 1rem; }
+        .project-highlights { margin-bottom: 1.5rem; }
+        .project-highlights h4 { font-size: 0.9rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; }
+        .project-highlights ul { list-style: none; padding-left: 0; }
+        .project-highlights li { color: #4b5563; font-size: 0.9rem; margin-bottom: 0.25rem; position: relative; padding-left: 1rem; }
+        .project-highlights li::before { content: '•'; color: #667eea; font-weight: bold; position: absolute; left: 0; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; font-weight: 500; }
         
-        .experience { padding: 100px 0; }
-        .experience-timeline { max-width: 800px; margin: 0 auto; position: relative; }
-        .experience-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #2563eb; transform: translateX(-50%); }
-        .experience-item { margin-bottom: 3rem; position: relative; }
-        .experience-content { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 45%; position: relative; }
-        .experience-item:nth-child(odd) .experience-content { margin-left: auto; }
-        .experience-item:nth-child(even) .experience-content { margin-right: auto; }
-        .experience-date { background: #2563eb; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; position: absolute; left: 50%; transform: translateX(-50%); top: 1rem; }
-        .experience-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937; }
-        .experience-company { color: #2563eb; font-weight: 600; margin-bottom: 1rem; }
-        .experience-description { color: #6b7280; line-height: 1.6; }
-        .experience-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .skill-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; }
+        /* Achievements Section */
+        .achievements { background: #f8fafc; }
+        .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .achievement-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .achievement-item:hover { transform: translateY(-3px); }
+        .achievement-item h4 { font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+        .achievement-item p { color: #4b5563; font-size: 0.9rem; }
         
-        .about { padding: 100px 0; }
-        .about-text p { font-size: 1.1rem; margin-bottom: 1.5rem; text-align: center; line-height: 1.8; }
+        /* Contact Section */
+        .contact { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .contact-content { text-align: center; max-width: 600px; margin: 0 auto; }
+        .contact-description { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+        .contact-info { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 0.5rem; }
+        .contact-item i { font-size: 1.2rem; }
+        .contact-links { display: flex; justify-content: center; gap: 1rem; }
+        .contact-links a { padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 25px; color: white; text-decoration: none; font-weight: 500; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .contact-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
         
-        .contact { padding: 100px 0; background: #f9fafb; }
-        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-        .contact-info h3 { font-size: 2rem; margin-bottom: 1rem; }
-        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-        .contact-icon { width: 50px; height: 50px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
-        .contact-form { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 10px; }
-        
+        /* Footer */
         .footer { background: #1f2937; color: white; padding: 2rem 0; text-align: center; }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-title { font-size: 2rem; }
-            .profile-img { width: 200px; height: 200px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .hero-title { font-size: 2.5rem; }
+            .profile-img { width: 250px; height: 250px; }
             .projects-grid { grid-template-columns: 1fr; }
-            .experience-timeline::before { left: 20px; }
-            .experience-content { width: calc(100% - 60px); margin-left: 60px !important; margin-right: 0 !important; }
-            .experience-date { left: 20px; transform: none; }
-            .contact-content { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+            .experience-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-container">
+        <div class="nav-container container">
             <div class="logo-text">Rishu Kumar</div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -105,16 +144,16 @@
             <div class="hero-content">
                 <div>
                     <h1 class="hero-title">Hi, I'm <span class="highlight">Rishu Kumar</span></h1>
-                    <h2 class="hero-subtitle">Frontend & Python Developer</h2>
-                    <p class="hero-description">Passionate Frontend & Python Developer with expertise in building responsive, user-friendly websites and interactive applications. Currently pursuing B.Sc. IT from Amity University.</p>
+                    <h2 class="hero-subtitle">Full Stack Developer | Frontend-Focused | Django & React</h2>
+                    <p class="hero-description">I'm a Full Stack Developer with strong expertise in frontend development and hands-on experience building scalable, real-world web applications. Currently pursuing B.Sc. in Information Technology (CGPA: 8.86), I have worked on industry-level projects during internships and hackathons, including a virtual tour platform for Bhilai Steel Plant (SAIL).</p>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+                        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
                     </div>
                     <div class="social-links">
                         <a href="https://github.com/rishu160" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/rishu-kumar-673b4427b" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:rishukumar@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:rishukuma.rk921@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div style="text-align: center;">
@@ -124,230 +163,241 @@
         </div>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Passionate developer building modern solutions</p>
+            <div class="about-content">
+                <p class="about-text">I am a passionate Full Stack Developer with a strong foundation in JavaScript, Python, Django, and React. I enjoy building modern, responsive, and user-centric web applications that solve real-world problems.</p>
+                <p class="about-text">I have completed a Full Stack Developer Internship at Bhilai Steel Plant (SAIL), where I worked on an immersive virtual tour web application for industrial facilities. I also have experience working as a Frontend Developer Intern, building scalable and interactive platforms.</p>
+                <p class="about-text">Alongside academics, I actively participate in hackathons, lead technical communities, and continuously sharpen my problem-solving skills through competitive programming and real-world projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Technologies I work with</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Django REST Framework</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Flutter</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Django ORM</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Developer Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">XAMPP</span>
+                        <span class="skill-tag">Render</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>UI & Styling</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Professional journey and internships</p>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Full Stack Developer Intern</h3>
+                            <div class="experience-company">Bhilai Steel Plant (SAIL)</div>
+                        </div>
+                        <div class="experience-date">July 2025 – Aug 2025</div>
+                    </div>
+                    <p class="experience-description">Developed an immersive virtual tour web application for Bhilai Power Plant, enabling users to explore the facility digitally. Designed and integrated RESTful APIs using Django and DRF. Managed and optimized databases using MySQL and Django ORM. Ensured scalability, performance, and smooth frontend–backend integration.</p>
+                    <div class="experience-skills">
+                        <span class="exp-skill-tag">HTML</span>
+                        <span class="exp-skill-tag">CSS</span>
+                        <span class="exp-skill-tag">JavaScript</span>
+                        <span class="exp-skill-tag">Django</span>
+                        <span class="exp-skill-tag">DRF</span>
+                        <span class="exp-skill-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Frontend Developer Intern</h3>
+                            <div class="experience-company">InternForte</div>
+                        </div>
+                        <div class="experience-date">Sep 2023 – Oct 2023</div>
+                    </div>
+                    <p class="experience-description">Developed a Next-Gen Smart House Platform for real-time control of lighting, security, and energy management. Focused on responsive UI design and seamless frontend interactions. Worked with local backend servers to ensure functional reliability.</p>
+                    <div class="experience-skills">
+                        <span class="exp-skill-tag">HTML</span>
+                        <span class="exp-skill-tag">CSS</span>
+                        <span class="exp-skill-tag">JavaScript</span>
+                        <span class="exp-skill-tag">XAMPP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects section">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Real-world applications and solutions</p>
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#ff6b6b,#4ecdc4);display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;text-align:center;">📚<br>Education<br>Platform</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        🏫 Educational Portal
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
                                 <a href="https://github.com/rishu160/rajasthan-educational-website" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
+                                <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Rajasthan Educational Website</h3>
-                        <p>Educational platform for Rajasthan with course information and interactive features.</p>
+                        <h3 class="project-title">Rajasthan Educational Portal</h3>
+                        <p class="project-description">A digital learning platform developed for rural diploma colleges under the Government of Rajasthan to provide accessible education with limited internet connectivity.</p>
+                        <div class="project-highlights">
+                            <h4>Key Highlights</h4>
+                            <ul>
+                                <li>Optimized for low-bandwidth environments</li>
+                                <li>Downloadable recorded sessions for offline learning</li>
+                                <li>Interactive features like quizzes, polls, and discussion boards</li>
+                                <li>Mobile-friendly and accessible on entry-level smartphones</li>
+                            </ul>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Bootstrap</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;text-align:center;">🚲<br>Bike Rental<br>System</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        💼 Internship Portal
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://rishu160.github.io/bike-rental-system/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/bike-rental-system" target="_blank" class="project-link">
+                                <a href="https://github.com/rishu160" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Bike Rental System</h3>
-                        <p>Complete bike rental management system with booking and payment features.</p>
+                        <h3 class="project-title">Internship Portal</h3>
+                        <p class="project-description">A web-based internship portal that matches students with opportunities based on their resumes.</p>
+                        <div class="project-highlights">
+                            <h4>Key Highlights</h4>
+                            <ul>
+                                <li>Smart internship recommendations</li>
+                                <li>Secure resume upload using Cloudinary</li>
+                                <li>User authentication with Firebase Authentication</li>
+                            </ul>
+                        </div>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Cloudinary</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;text-align:center;">🍕<br>Food<br>Website</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb, #f5576c); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        🍔 Food Ordering
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://rishu160.github.io/food-website/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
                                 <a href="https://github.com/rishu160/food-website" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
+                                <a href="https://rishu160.github.io/food-website/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Food Ordering Website</h3>
-                        <p>Responsive food ordering website with dynamic menu and contact form.</p>
+                        <h3 class="project-title">Food Ordering System</h3>
+                        <p class="project-description">A fully responsive food ordering website with interactive menus and cart functionality.</p>
+                        <div class="project-highlights">
+                            <h4>Key Highlights</h4>
+                            <ul>
+                                <li>Clean, modern UI design</li>
+                                <li>Mobile-first responsive layout</li>
+                                <li>Smooth ordering and cart experience</li>
+                            </ul>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Tailwind CSS</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;text-align:center;">🛒<br>E-commerce<br>Platform</div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e, #fecfef); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        🏭 Virtual Tour
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://rishu160.github.io/E-commerce-website/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/E-commerce-website" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Full-featured e-commerce platform with product catalog and shopping cart.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#a8edea,#fed6e3);display:flex;align-items:center;justify-content:center;color:#333;font-size:24px;font-weight:bold;text-align:center;">🎯<br>Guessing<br>Game</div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://rishu160.github.io/guessing-number-game/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/guessing-number-game" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Number Guessing Game</h3>
-                        <p>Interactive number guessing game with score tracking and difficulty levels.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#ffecd2,#fcb69f);display:flex;align-items:center;justify-content:center;color:#333;font-size:24px;font-weight:bold;text-align:center;">🛤️<br>Career<br>Pathway</div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://rishu160.github.io/The-pathway/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/The-pathway" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>The Pathway</h3>
-                        <p>Career guidance and educational pathway platform with course recommendations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#ff9a9e,#fecfef);display:flex;align-items:center;justify-content:center;color:#333;font-size:24px;font-weight:bold;text-align:center;">🏭<br>Steel Plant<br>Virtual Tour</div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://rishu160.github.io/power-bhilai-plant/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
                                 <a href="https://github.com/rishu160/power-bhilai-plant" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
+                                <a href="https://rishu160.github.io/power-bhilai-plant/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Bhilai Steel Plant Virtual Tour</h3>
-                        <p>Interactive virtual tour website for Bhilai Steel Plant with department-wise information and modern UI design.</p>
+                        <h3 class="project-title">Steel Plant Virtual Tour Platform</h3>
+                        <p class="project-description">An immersive virtual tour application designed to digitally explore industrial facilities with interactive navigation.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#84fab0,#8fd3f4);display:flex;align-items:center;justify-content:center;color:#333;font-size:24px;font-weight:bold;text-align:center;">✂️<br>Rock Paper<br>Scissor</div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://rishu160.github.io/rock-paper-scissor-game/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/rock-paper-scissor-game" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Rock Paper Scissor Game</h3>
-                        <p>Classic rock paper scissor game with interactive gameplay and score tracking built using Python.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:bold;text-align:center;">💼<br>Portfolio<br>Website</div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://rishu160.github.io/portfolio-website/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/rishu160/portfolio-website" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>Personal portfolio website showcasing projects, skills, and experience with modern design and responsive layout.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">DRF</span>
                         </div>
                     </div>
                 </div>
@@ -356,159 +406,64 @@
         </div>
     </section>
 
-    <section id="experience" class="experience">
+    <section id="achievements" class="achievements section">
         <div class="container">
-            <h2 class="section-title">Project Experience</h2>
-            <div class="experience-timeline">
-                
-                <div class="experience-item">
-                    <div class="experience-date">2024</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Portfolio Website Development</h3>
-                        <div class="experience-company">Personal Project</div>
-                        <p class="experience-description">Developed a comprehensive portfolio website showcasing projects, skills, and experience with modern design and responsive layout. Implemented GitHub Actions for automatic deployment.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">GitHub Pages</span>
-                        </div>
-                    </div>
+            <h2 class="section-title">Achievements & Leadership</h2>
+            <p class="section-subtitle">Recognition and community involvement</p>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <h4>President & Founder – PyAlgo Club</h4>
+                    <p>Organized coding workshops, competitions, and technical sessions.</p>
                 </div>
-
-                <div class="experience-item">
-                    <div class="experience-date">2024</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Bhilai Steel Plant Virtual Tour</h3>
-                        <div class="experience-company">Web Development Project</div>
-                        <p class="experience-description">Created an interactive virtual tour website for Bhilai Steel Plant with department-wise information and modern UI design. Implemented responsive design and interactive features.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Bootstrap</span>
-                        </div>
-                    </div>
+                <div class="achievement-item">
+                    <h4>Winner – SIH 2025 (Internal Finalist)</h4>
+                    <p>Smart India Hackathon internal finalist recognition.</p>
                 </div>
-
-                <div class="experience-item">
-                    <div class="experience-date">2024</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">E-commerce Platform Development</h3>
-                        <div class="experience-company">Frontend Project</div>
-                        <p class="experience-description">Built a full-featured e-commerce platform with product catalog, shopping cart functionality, and responsive design. Focused on user experience and modern web standards.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Responsive Design</span>
-                        </div>
-                    </div>
+                <div class="achievement-item">
+                    <h4>AI Workshop – Generative AI</h4>
+                    <p>Nextwave, Jan 2024</p>
                 </div>
-
-                <div class="experience-item">
-                    <div class="experience-date">2023</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Python Game Development</h3>
-                        <div class="experience-company">Programming Projects</div>
-                        <p class="experience-description">Developed interactive Python games including Rock Paper Scissor and Number Guessing Game with score tracking, difficulty levels, and user-friendly interfaces.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Game Logic</span>
-                            <span class="skill-tag">User Interface</span>
-                            <span class="skill-tag">Algorithm Design</span>
-                        </div>
-                    </div>
+                <div class="achievement-item">
+                    <h4>Ethical Hacking Workshop – EHE</h4>
+                    <p>Mar 2024</p>
                 </div>
-
-                <div class="experience-item">
-                    <div class="experience-date">2023</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Educational & Career Platforms</h3>
-                        <div class="experience-company">Web Development</div>
-                        <p class="experience-description">Created Rajasthan Educational Website and The Pathway career guidance platform with course information, interactive features, and modern responsive design.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Bootstrap</span>
-                        </div>
-                    </div>
+                <div class="achievement-item">
+                    <h4>150+ DSA & CP Problems Solved</h4>
+                    <p>CodeChef and LeetCode platforms</p>
                 </div>
-
-                <div class="experience-item">
-                    <div class="experience-date">2023</div>
-                    <div class="experience-content">
-                        <h3 class="experience-title">Food Ordering & Bike Rental Systems</h3>
-                        <div class="experience-company">Full-Stack Projects</div>
-                        <p class="experience-description">Developed responsive food ordering website and bike rental management system with booking features, dynamic menus, and complete user management functionality.</p>
-                        <div class="experience-skills">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Bootstrap</span>
-                        </div>
-                    </div>
+                <div class="achievement-item">
+                    <h4>Communication Skills Workshop</h4>
+                    <p>NIT Raipur, Jan 2024</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="contact" class="contact section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-text">
-                <p>I'm a passionate Frontend Developer & Python Developer with a strong foundation in modern web technologies and programming. Currently pursuing B.Sc. IT from Amity University, I specialize in creating responsive, user-friendly websites and developing interactive applications.</p>
-                <p>My journey started with HTML and CSS, then expanded to JavaScript, React, and Python development. I enjoy building both web interfaces and backend logic, creating complete solutions from frontend to backend. I'm always eager to learn new technologies and tackle challenging projects.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
+                <h2 class="section-title" style="color: white;">Get In Touch</h2>
+                <p class="contact-description">I'm open to internships, full-time roles, and freelance opportunities. If you're looking for a motivated developer or want to collaborate, feel free to reach out.</p>
                 <div class="contact-info">
-                    <h3>Let's Work Together</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
-                    
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>rishukumar@gmail.com</p>
-                        </div>
+                        <i class="fas fa-envelope"></i>
+                        <span>rishukuma.rk921@gmail.com</span>
                     </div>
-                    
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91 7808781636</p>
-                        </div>
+                        <i class="fas fa-phone"></i>
+                        <span>+91 78087 81636</span>
                     </div>
                 </div>
-                
-                <div class="contact-form">
-                    <form action="mailto:rishukumar@gmail.com" method="GET">
-                        <div class="form-group">
-                            <input type="text" name="subject" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="body" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                <div class="contact-links">
+                    <a href="https://github.com/rishu160" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/rishu-kumar-673b4427b" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="mailto:rishukuma.rk921@gmail.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
                 </div>
             </div>
         </div>
@@ -516,20 +471,30 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Rishu Kumar. All rights reserved.</p>
-            <p>Built with ❤️ using HTML, CSS & JavaScript</p>
+            <p>&copy; 2026 Rishu Kumar | Designed & Developed by Me</p>
         </div>
     </footer>
 
     <script>
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+            }
         });
     </script>
 </body>
