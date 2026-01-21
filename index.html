@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rishu Kumar is a Full Stack Developer specializing in frontend development, Django, and React. Experienced in building real-world web applications, virtual tour platforms, and government-focused digital solutions." />
     <title>Rishu Kumar | Full Stack Developer | Frontend & Django</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -76,7 +77,14 @@
         
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         
-        /* Skills Section */
+        /* Bootstrap Enhancements */
+        .hero-content { display: block; }
+        .skill-category.card { border: none; transition: transform 0.3s; }
+        .skill-category.card:hover { transform: translateY(-5px); }
+        .skill-tag.badge { background: linear-gradient(135deg, #667eea, #764ba2) !important; margin: 0.25rem; }
+        .project-card.card { border: none; overflow: hidden; }
+        .project-image { height: 200px; position: relative; overflow: hidden; }
+        .card-img-top { height: 100%; object-fit: cover; }
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .skill-category { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
         .skill-category:hover { transform: translateY(-5px); }
@@ -174,22 +182,24 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div>
-                    <h1 class="hero-title">Building Scalable Web Experiences That <span class="highlight">Solve Real-World Problems</span></h1>
-                    <h2 class="hero-subtitle">Full Stack Developer | Frontend-Focused | Django & React</h2>
-                    <p class="hero-description">I'm Rishu Kumar, a Full Stack Developer with a strong focus on frontend development and hands-on experience building real-world, production-ready web applications. Currently pursuing B.Sc. in Information Technology (CGPA: 8.86), I have worked on industry-level projects, government-focused platforms, and hackathon-winning solutions.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
-                        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <h1 class="hero-title">Building Scalable Web Experiences That <span class="highlight">Solve Real-World Problems</span></h1>
+                        <h2 class="hero-subtitle">Full Stack Developer | Frontend-Focused | Django & React</h2>
+                        <p class="hero-description">I'm Rishu Kumar, a Full Stack Developer with a strong focus on frontend development and hands-on experience building real-world, production-ready web applications. Currently pursuing B.Sc. in Information Technology (CGPA: 8.86), I have worked on industry-level projects, government-focused platforms, and hackathon-winning solutions.</p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+                            <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/rishu160" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/rishu-kumar-673b4427b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:rishukuma.rk921@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <div class="social-links">
-                        <a href="https://github.com/rishu160" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/rishu-kumar-673b4427b" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:rishukuma.rk921@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <div class="col-lg-5 text-center">
+                        <img src="profile-photo.jpg" alt="Rishu Kumar" class="profile-img img-fluid">
                     </div>
-                </div>
-                <div style="text-align: center;">
-                    <img src="profile-photo.jpg" alt="Rishu Kumar" class="profile-img">
                 </div>
             </div>
         </div>
@@ -246,48 +256,68 @@
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <p class="section-subtitle">Technologies I work with</p>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">C</span>
+            <div class="row g-4 mt-3">
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-category card h-100">
+                        <div class="card-body">
+                            <h3>Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag badge">JavaScript</span>
+                                <span class="skill-tag badge">Python</span>
+                                <span class="skill-tag badge">C++</span>
+                                <span class="skill-tag badge">C</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Django REST Framework</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Flutter</span>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-category card h-100">
+                        <div class="card-body">
+                            <h3>Frameworks & Libraries</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag badge">Django</span>
+                                <span class="skill-tag badge">Django REST Framework</span>
+                                <span class="skill-tag badge">React.js</span>
+                                <span class="skill-tag badge">Flutter</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Databases & Backend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Django ORM</span>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-category card h-100">
+                        <div class="card-body">
+                            <h3>Databases & Backend</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag badge">MySQL</span>
+                                <span class="skill-tag badge">Django ORM</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Developer Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git & GitHub</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">XAMPP</span>
-                        <span class="skill-tag">Render</span>
-                        <span class="skill-tag">Vercel</span>
-                        <span class="skill-tag">Figma</span>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-category card h-100">
+                        <div class="card-body">
+                            <h3>Developer Tools</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag badge">Git & GitHub</span>
+                                <span class="skill-tag badge">Postman</span>
+                                <span class="skill-tag badge">XAMPP</span>
+                                <span class="skill-tag badge">Render</span>
+                                <span class="skill-tag badge">Vercel</span>
+                                <span class="skill-tag badge">Figma</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>UI & Styling</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">Bootstrap</span>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-category card h-100">
+                        <div class="card-body">
+                            <h3>UI & Styling</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag badge">Tailwind CSS</span>
+                                <span class="skill-tag badge">Bootstrap</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -345,36 +375,43 @@
             <p class="section-subtitle">Real-world applications and solutions</p>
             <div class="projects-grid">
                 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Educational Platform" style="width:100%;height:100%;object-fit:cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rishu160/rajasthan-educational-website" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Real-world applications and solutions</p>
+            <div class="row g-4">
+                
+                <div class="col-lg-6 col-md-6">
+                    <div class="project-card card h-100">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Educational Platform" class="card-img-top">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/rishu160/rajasthan-educational-website" target="_blank" class="project-link btn btn-light btn-sm">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="project-link btn btn-light btn-sm">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Rajasthan Educational Portal</h3>
-                        <p class="project-description">A digital learning platform developed for rural diploma colleges under the Government of Rajasthan to provide accessible education with limited internet connectivity.</p>
-                        <div class="project-highlights">
-                            <h4>Key Highlights</h4>
-                            <ul>
-                                <li>Optimized for low-bandwidth environments</li>
-                                <li>Downloadable recorded sessions for offline learning</li>
-                                <li>Interactive features like quizzes, polls, and discussion boards</li>
-                                <li>Mobile-friendly and accessible on entry-level smartphones</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
+                        <div class="card-body">
+                            <h3 class="card-title">Rajasthan Educational Portal</h3>
+                            <p class="card-text">A digital learning platform developed for rural diploma colleges under the Government of Rajasthan to provide accessible education with limited internet connectivity.</p>
+                            <div class="project-highlights">
+                                <h6>Key Highlights</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-primary me-2"></i>Optimized for low-bandwidth environments</li>
+                                    <li><i class="fas fa-check text-primary me-2"></i>Downloadable recorded sessions for offline learning</li>
+                                    <li><i class="fas fa-check text-primary me-2"></i>Interactive features like quizzes, polls, and discussion boards</li>
+                                    <li><i class="fas fa-check text-primary me-2"></i>Mobile-friendly and accessible on entry-level smartphones</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <span class="badge bg-secondary me-1">HTML</span>
+                                <span class="badge bg-secondary me-1">CSS</span>
+                                <span class="badge bg-secondary me-1">JavaScript</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -593,6 +630,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
