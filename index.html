@@ -106,26 +106,289 @@
         .experience-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .exp-skill-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; font-weight: 500; }
         
-        /* Projects Section */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
-        .project-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .project-image { height: 200px; position: relative; overflow: hidden; }
-        .project-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(102,126,234,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-        .project-card:hover .project-overlay { opacity: 1; }
-        .project-links { display: flex; gap: 1rem; }
-        .project-link { width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #667eea; text-decoration: none; transition: transform 0.3s; }
-        .project-link:hover { transform: scale(1.1); }
-        .project-content { padding: 2rem; }
-        .project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
-        .project-description { color: #4b5563; line-height: 1.6; margin-bottom: 1rem; }
-        .project-highlights { margin-bottom: 1.5rem; }
-        .project-highlights h4 { font-size: 0.9rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; }
-        .project-highlights ul { list-style: none; padding-left: 0; }
-        .project-highlights li { color: #4b5563; font-size: 0.9rem; margin-bottom: 0.25rem; position: relative; padding-left: 1rem; }
-        .project-highlights li::before { content: '•'; color: #667eea; font-weight: bold; position: absolute; left: 0; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tech-tag { background: #e5e7eb; color: #374151; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.75rem; font-weight: 500; }
+        /* Projects Section Enhanced */
+        .projects { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .projects-showcase { margin-top: 4rem; }
+        
+        /* Featured Project */
+        .featured-project { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+            background: white; 
+            border-radius: 24px; 
+            padding: 3rem; 
+            margin-bottom: 4rem; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .project-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .project-description {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .project-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #374151;
+        }
+        .highlight-item i {
+            width: 20px;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-project.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-project.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        .btn-project.secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        .btn-project.secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .project-visual {
+            position: relative;
+        }
+        .project-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .project-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-image-wrapper:hover .image-overlay {
+            opacity: 1;
+        }
+        .project-image-wrapper:hover .project-image {
+            transform: scale(1.05);
+        }
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.5rem;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .card-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+        .project-card:hover .card-image {
+            transform: scale(1.1);
+        }
+        .overlay-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        .overlay-btn {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .overlay-btn:hover {
+            transform: scale(1.1);
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .project-category {
+            display: inline-block;
+            background: #e5e7eb;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .card-description {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .mini-tech {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
         
         /* Achievements Section */
         .achievements { background: #f8fafc; }
@@ -161,6 +424,18 @@
             .skills-grid { grid-template-columns: 1fr; }
             .contact-info { flex-direction: column; gap: 1rem; }
             .experience-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            
+            /* Projects Responsive */
+            .featured-project { 
+                grid-template-columns: 1fr; 
+                gap: 2rem; 
+                padding: 2rem; 
+                text-align: center;
+            }
+            .project-title { font-size: 1.5rem; }
+            .project-actions { justify-content: center; flex-wrap: wrap; }
+            .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-highlights { align-items: center; }
         }
     </style>
 </head>
@@ -371,147 +646,149 @@
 
     <section id="projects" class="projects section">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">Real-world applications and solutions</p>
-            <div class="row g-4">
-                
-                <div class="col-lg-6 col-md-6">
-                    <div class="project-card card h-100">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Educational Platform" class="card-img-top">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://github.com/rishu160/rajasthan-educational-website" target="_blank" class="btn btn-light btn-sm me-2">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Innovative solutions built with modern technologies</p>
+            
+            <div class="projects-showcase">
+                <!-- Featured Project -->
+                <div class="featured-project">
+                    <div class="project-content">
+                        <div class="project-badge">🏆 Featured Project</div>
+                        <h3 class="project-title">Steel Plant Virtual Tour Platform</h3>
+                        <p class="project-description">An immersive virtual tour application designed for Bhilai Steel Plant (SAIL) to digitally showcase industrial facilities with interactive navigation and department-wise information display.</p>
+                        <div class="project-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-industry"></i>
+                                <span>Industry-level project for SAIL</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users"></i>
+                                <span>Real-world deployment</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive design</span>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/rishu160/power-bhilai-plant" target="_blank" class="btn-project primary">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="https://rishu160.github.io/power-bhilai-plant/" target="_blank" class="btn-project secondary">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Steel Plant Virtual Tour" class="project-image">
+                            <div class="image-overlay">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Projects Grid -->
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Educational Platform" class="card-image">
+                            <div class="card-overlay">
+                                <div class="overlay-actions">
+                                    <a href="https://github.com/rishu160/rajasthan-educational-website" target="_blank" class="overlay-btn">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                    <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="btn btn-light btn-sm">
+                                    <a href="https://rishu160.github.io/rajasthan-educational-website/" target="_blank" class="overlay-btn">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Rajasthan Educational Portal</h5>
-                            <p class="card-text">A digital learning platform developed for rural diploma colleges under the Government of Rajasthan to provide accessible education with limited internet connectivity.</p>
-                            <div class="mb-3">
-                                <h6 class="text-primary">Key Highlights</h6>
-                                <ul class="list-unstyled small">
-                                    <li><i class="fas fa-check text-success me-2"></i>Optimized for low-bandwidth environments</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Downloadable recorded sessions for offline learning</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Interactive features like quizzes, polls, and discussion boards</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Mobile-friendly and accessible on entry-level smartphones</li>
-                                </ul>
+                            <div class="project-category">Government Project</div>
+                            <h4 class="card-title">Rajasthan Educational Portal</h4>
+                            <p class="card-description">Digital learning platform for rural diploma colleges with offline capabilities and low-bandwidth optimization.</p>
+                            <div class="card-features">
+                                <span class="feature">📱 Mobile-first</span>
+                                <span class="feature">🌐 Offline support</span>
+                                <span class="feature">⚡ Low bandwidth</span>
                             </div>
-                            <div>
-                                <span class="badge bg-primary me-1">HTML</span>
-                                <span class="badge bg-primary me-1">CSS</span>
-                                <span class="badge bg-primary me-1">JavaScript</span>
+                            <div class="card-tech">
+                                <span class="mini-tech">HTML</span>
+                                <span class="mini-tech">CSS</span>
+                                <span class="mini-tech">JavaScript</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-6 col-md-6">
-                    <div class="project-card card h-100">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Internship Portal" class="card-img-top">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://github.com/rishu160" target="_blank" class="btn btn-light btn-sm">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Internship Portal" class="card-image">
+                            <div class="card-overlay">
+                                <div class="overlay-actions">
+                                    <a href="https://github.com/rishu160" target="_blank" class="overlay-btn">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Internship Portal</h5>
-                            <p class="card-text">A web-based internship portal that matches students with opportunities based on their resumes.</p>
-                            <div class="mb-3">
-                                <h6 class="text-primary">Key Highlights</h6>
-                                <ul class="list-unstyled small">
-                                    <li><i class="fas fa-check text-success me-2"></i>Smart internship recommendations</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Secure resume upload using Cloudinary</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>User authentication with Firebase Authentication</li>
-                                </ul>
+                            <div class="project-category">Web Application</div>
+                            <h4 class="card-title">Smart Internship Portal</h4>
+                            <p class="card-description">AI-powered platform matching students with internships based on resume analysis and preferences.</p>
+                            <div class="card-features">
+                                <span class="feature">🤖 AI matching</span>
+                                <span class="feature">☁️ Cloud storage</span>
+                                <span class="feature">🔐 Secure auth</span>
                             </div>
-                            <div>
-                                <span class="badge bg-primary me-1">JavaScript</span>
-                                <span class="badge bg-primary me-1">Firebase</span>
-                                <span class="badge bg-primary me-1">Cloudinary</span>
+                            <div class="card-tech">
+                                <span class="mini-tech">JavaScript</span>
+                                <span class="mini-tech">Firebase</span>
+                                <span class="mini-tech">Cloudinary</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-6 col-md-6">
-                    <div class="project-card card h-100">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food Ordering System" class="card-img-top">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://github.com/rishu160/food-website" target="_blank" class="btn btn-light btn-sm me-2">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food Ordering" class="card-image">
+                            <div class="card-overlay">
+                                <div class="overlay-actions">
+                                    <a href="https://github.com/rishu160/food-website" target="_blank" class="overlay-btn">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                    <a href="https://rishu160.github.io/food-website/" target="_blank" class="btn btn-light btn-sm">
+                                    <a href="https://rishu160.github.io/food-website/" target="_blank" class="overlay-btn">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Food Ordering System</h5>
-                            <p class="card-text">A fully responsive food ordering website with interactive menus and cart functionality.</p>
-                            <div class="mb-3">
-                                <h6 class="text-primary">Key Highlights</h6>
-                                <ul class="list-unstyled small">
-                                    <li><i class="fas fa-check text-success me-2"></i>Clean, modern UI design</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Mobile-first responsive layout</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Smooth ordering and cart experience</li>
-                                </ul>
+                            <div class="project-category">E-commerce</div>
+                            <h4 class="card-title">Food Ordering System</h4>
+                            <p class="card-description">Modern food delivery platform with interactive menus, cart management, and smooth ordering experience.</p>
+                            <div class="card-features">
+                                <span class="feature">🛒 Smart cart</span>
+                                <span class="feature">💳 Payment ready</span>
+                                <span class="feature">📱 Responsive</span>
                             </div>
-                            <div>
-                                <span class="badge bg-primary me-1">HTML</span>
-                                <span class="badge bg-primary me-1">CSS</span>
-                                <span class="badge bg-primary me-1">Bootstrap</span>
-                                <span class="badge bg-primary me-1">Tailwind CSS</span>
+                            <div class="card-tech">
+                                <span class="mini-tech">HTML</span>
+                                <span class="mini-tech">CSS</span>
+                                <span class="mini-tech">Bootstrap</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6 col-md-6">
-                    <div class="project-card card h-100">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Steel Plant Virtual Tour" class="card-img-top">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="https://github.com/rishu160/power-bhilai-plant" target="_blank" class="btn btn-light btn-sm me-2">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="https://rishu160.github.io/power-bhilai-plant/" target="_blank" class="btn btn-light btn-sm">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Steel Plant Virtual Tour Platform</h5>
-                            <p class="card-text">An immersive virtual tour application designed to digitally explore industrial facilities with interactive navigation.</p>
-                            <div class="mb-3">
-                                <h6 class="text-primary">Industry Project - SAIL</h6>
-                                <p class="small text-muted">Developed during internship at Bhilai Steel Plant</p>
-                            </div>
-                            <div>
-                                <span class="badge bg-primary me-1">HTML</span>
-                                <span class="badge bg-primary me-1">CSS</span>
-                                <span class="badge bg-primary me-1">JavaScript</span>
-                                <span class="badge bg-primary me-1">Django</span>
-                                <span class="badge bg-primary me-1">DRF</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
